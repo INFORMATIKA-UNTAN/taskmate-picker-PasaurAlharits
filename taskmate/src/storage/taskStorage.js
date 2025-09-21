@@ -12,7 +12,6 @@ export async function saveTasks(tasks) {
         console.error('Gagal menyimpan:', e);
     }
 }
-
 // Load array tugas dari AsyncStorage
 export async function loadTasks() {
     try {
@@ -21,5 +20,14 @@ export async function loadTasks() {
     } catch (e) {
         console.error('Gagal membaca:', e);
         return [];
+    }
+}
+
+export async function clearTasks() {
+    try {
+        await AsyncStorage.removeItem(STORAGE_KEY);
+        console.log(' tugas berhasil dihapus');
+    } catch (e) {
+        console.error('Gagal menghapus tugas:', e);
     }
 }
